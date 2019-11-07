@@ -5,17 +5,29 @@
  */
 package ejerciciodevlights;
 
+import java.util.Scanner;
+
 /**
  *
  * @author erick
  */
 public class EjercicioDevlights {
-
+    
+    public static void leerString(String s){
+            char[]arreglo = s.toCharArray();
+            for(int i=0; i< arreglo.length; i++){
+                char v = arreglo[i];
+                System.out.println(v);
+            }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+    public static void main(String[] args){
+        Scanner leer = new Scanner(System.in);
+        String s = leer.next();
+        leerString(s);
+	}
 }
