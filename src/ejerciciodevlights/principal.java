@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author erick
  */
-public class EjercicioDevlights {
+public class principal {
     
     public static void leerString(String s){
             char[]arreglo = s.toCharArray();
