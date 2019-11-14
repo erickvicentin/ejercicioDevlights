@@ -25,6 +25,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         setSize(370,320);
         setResizable(false);
         setLocationRelativeTo(null);
+        setTitle("Programa DevLigths");
         
         jTxt_string.setVisible(false);
         jBtn_calcular.setVisible(false);
@@ -93,7 +94,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jBtn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 11, 166, -1));
 
-        jBtn_calcular.setText("Calcular Similaridad");
+        jBtn_calcular.setText("Calcular");
         jBtn_calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtn_calcularActionPerformed(evt);
@@ -112,10 +113,22 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jLabel_resultado.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jLabel_resultado.setText("String:");
+        jLabel_resultado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jLabel_resultadoKeyTyped(evt);
+            }
+        });
         getContentPane().add(jLabel_resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 174, 346, 30));
 
+        jTxt_resultado.setBackground(new java.awt.Color(0, 0, 0));
+        jTxt_resultado.setForeground(new java.awt.Color(255, 255, 255));
         jTxt_resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTxt_resultado.setText("Resultado:");
+        jTxt_resultado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxt_resultadoKeyTyped(evt);
+            }
+        });
         getContentPane().add(jTxt_resultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 216, 346, 30));
 
         jLabel_END.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -162,7 +175,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         string_contador.setVisible(true);
         jLabel_ingreseString.setVisible(true);
         jLabel_resultado.setVisible(true);
-        jTxt_resultado.disable();
+        
        
         string_contador.setText("Iteraciones restantes: " + cantidad);
 
@@ -221,6 +234,14 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private void jTxt_stringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxt_stringActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxt_stringActionPerformed
+
+    private void jLabel_resultadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel_resultadoKeyTyped
+        evt.consume();
+    }//GEN-LAST:event_jLabel_resultadoKeyTyped
+
+    private void jTxt_resultadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_resultadoKeyTyped
+        evt.consume();
+    }//GEN-LAST:event_jTxt_resultadoKeyTyped
 
     /**
      * @param args the command line arguments
