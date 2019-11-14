@@ -159,8 +159,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
     private void jTxt_stringKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_stringKeyTyped
         char c = evt.getKeyChar(); if (c<'a'||c>'z') evt.consume();
-        int limite = 100000;
-        if (evt.toString().length()==limite) evt.consume();
+        String s = jTxt_string.getText();
+        if (s.length() == 100000){ evt.consume();}
     }//GEN-LAST:event_jTxt_stringKeyTyped
 
     private void jBtn_startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn_startMouseClicked
