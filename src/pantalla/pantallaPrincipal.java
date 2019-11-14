@@ -5,22 +5,27 @@
  */
 package pantalla;
 
+import ejerciciodevlights.principal;
+
 /**
  *
  * @author erick
  */
-public class principal extends javax.swing.JFrame {
+public class pantallaPrincipal extends javax.swing.JFrame {
     public int cantidad;
     public int contador;
     /**
      * Creates new form principal
      */
-    public principal() {
+    public pantallaPrincipal() {
         initComponents();
         jTxt_string.setVisible(false);
         jBtn_calcular.setVisible(false);
         jTxt_resultado.setVisible(false);
         string_contador.setVisible(false);
+        jLabel_ingreseString.setVisible(false);
+        jLabel_resultado.setVisible(false);
+        jLabel_END.setVisible(false);
 
     }
 
@@ -38,13 +43,16 @@ public class principal extends javax.swing.JFrame {
         jTxt_cantidad = new javax.swing.JTextField();
         jBtn_start = new javax.swing.JButton();
         jBtn_calcular = new javax.swing.JButton();
-        jTxt_resultado = new javax.swing.JTextField();
         string_contador = new javax.swing.JLabel();
+        jLabel_ingreseString = new javax.swing.JLabel();
+        jLabel_resultado = new javax.swing.JTextField();
+        jTxt_resultado = new javax.swing.JTextField();
+        jLabel_END = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTxt_string.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTxt_string.setText("Ingresar String");
         jTxt_string.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTxt_stringKeyTyped(evt);
@@ -74,6 +82,11 @@ public class principal extends javax.swing.JFrame {
                 jBtn_startMouseClicked(evt);
             }
         });
+        jBtn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtn_startActionPerformed(evt);
+            }
+        });
 
         jBtn_calcular.setText("Calcular Similaridad");
         jBtn_calcular.addActionListener(new java.awt.event.ActionListener() {
@@ -82,8 +95,20 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
+        string_contador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel_ingreseString.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_ingreseString.setText("Ingrese un string");
+
+        jLabel_resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLabel_resultado.setText("String:");
+
         jTxt_resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTxt_resultado.setText("Resultado");
+        jTxt_resultado.setText("Resultado:");
+
+        jLabel_END.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel_END.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_END.setText("FIN DE PROGRAMA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,18 +117,19 @@ public class principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(string_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_END, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTxt_resultado)
                     .addComponent(jTxt_string, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                    .addComponent(string_contador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(label_cantidadS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTxt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBtn_start, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jBtn_calcular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTxt_resultado, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel_ingreseString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtn_calcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_resultado, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -114,15 +140,21 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(label_cantidadS)
                     .addComponent(jTxt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtn_start))
-                .addGap(18, 18, 18)
-                .addComponent(jTxt_string, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_END, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_ingreseString)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTxt_string, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtn_calcular)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTxt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(jLabel_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTxt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(string_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -133,6 +165,11 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTxt_stringKeyTyped
 
     private void jBtn_startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn_startMouseClicked
+        
+        String cantidadS;
+        cantidadS = this.jTxt_cantidad.getText();
+        cantidad = Integer.parseInt(cantidadS);
+       
         jBtn_start.setVisible(false);
         jTxt_cantidad.setVisible(false);
         label_cantidadS.setVisible(false);
@@ -140,26 +177,44 @@ public class principal extends javax.swing.JFrame {
         jBtn_calcular.setVisible(true);
         jTxt_resultado.setVisible(true);
         string_contador.setVisible(true);
+        jLabel_ingreseString.setVisible(true);
+        jLabel_resultado.disable();
+        jLabel_resultado.setVisible(true);
+        jTxt_resultado.disable();
         
-        String cantidadS;
-        cantidadS = this.jTxt_cantidad.getText();
-        cantidad = Integer.parseInt(cantidadS);
+        
+    
+      
+        string_contador.setText("Iteraciones restantes: " + cantidad);
 
     }//GEN-LAST:event_jBtn_startMouseClicked
 
     private void jBtn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_calcularActionPerformed
-    int i = 0;
-    while (cantidad > i){
-
+    
+        
         String string;
         string = this.jTxt_string.getText();
-
-        this.jTxt_resultado.setText(string);
+        cantidad = cantidad -1;
+        int a = principal.obtenerValor(string);
+        this.jTxt_resultado.setText("Similaridad: " + a);
         this.jTxt_string.setText("");
+        this.jLabel_resultado.setText("String: " + string);
+        string_contador.setText("Iteraciones restantes: " + cantidad);
+        
+        if (cantidad == 0){
+               jTxt_string.setVisible(false);
+               jBtn_calcular.setVisible(false);
+               jTxt_resultado.setVisible(false);
+               string_contador.setVisible(false);
+               jLabel_ingreseString.setVisible(false);
+               jLabel_resultado.setVisible(true);
+               jTxt_resultado.setVisible(true);
+               jLabel_END.setVisible(true);
+               this.jTxt_resultado.setText("Similaridad: " + a);
+               
+               
+        }
 
-        this.string_contador.setText("String: " + i);
-        i = i+1;
-    }
     
     }//GEN-LAST:event_jBtn_calcularActionPerformed
 
@@ -170,6 +225,12 @@ public class principal extends javax.swing.JFrame {
     private void jTxt_cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_cantidadKeyTyped
         char c = evt.getKeyChar(); if (c<'0'||c>'9') evt.consume();
     }//GEN-LAST:event_jTxt_cantidadKeyTyped
+
+    private void jBtn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_startActionPerformed
+        String cantidadS;
+        cantidadS = this.jTxt_cantidad.getText();
+        cantidad = Integer.parseInt(cantidadS);
+    }//GEN-LAST:event_jBtn_startActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,20 +249,21 @@ public class principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new principal().setVisible(true);
+                new pantallaPrincipal().setVisible(true);
             }
         });
     }
@@ -209,6 +271,9 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtn_calcular;
     private javax.swing.JButton jBtn_start;
+    private javax.swing.JLabel jLabel_END;
+    private javax.swing.JLabel jLabel_ingreseString;
+    private javax.swing.JTextField jLabel_resultado;
     private javax.swing.JTextField jTxt_cantidad;
     private javax.swing.JTextField jTxt_resultado;
     private javax.swing.JTextField jTxt_string;
