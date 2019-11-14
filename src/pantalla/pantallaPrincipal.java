@@ -22,7 +22,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         /*valores de la ventana*/
-        setSize(370,320);
+        setSize(370,400);
         setResizable(false);
         setLocationRelativeTo(null);
         setTitle("Programa DevLigths");
@@ -34,6 +34,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jLabel_ingreseString.setVisible(false);
         jLabel_resultado.setVisible(false);
         jLabel_END.setVisible(false);
+        salir.setVisible(false);
+        reiniciar.setVisible(false);
 
     }
 
@@ -57,6 +59,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jLabel_END = new javax.swing.JLabel();
         jBox_cantidad = new javax.swing.JComboBox<>();
         logo = new javax.swing.JLabel();
+        salir = new javax.swing.JButton();
+        reiniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -103,6 +107,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jBtn_calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 139, 346, -1));
 
         string_contador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        string_contador.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         getContentPane().add(string_contador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 346, 17));
 
         jLabel_ingreseString.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -111,7 +116,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
         jLabel_resultado.setBackground(new java.awt.Color(0, 0, 0));
         jLabel_resultado.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLabel_resultado.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jLabel_resultado.setText("String:");
         jLabel_resultado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -122,7 +127,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
         jTxt_resultado.setBackground(new java.awt.Color(0, 0, 0));
         jTxt_resultado.setForeground(new java.awt.Color(255, 255, 255));
-        jTxt_resultado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxt_resultado.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTxt_resultado.setText("Resultado:");
         jTxt_resultado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -142,6 +147,32 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logonuevo3.png"))); // NOI18N
         getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 370, 240));
+
+        salir.setText("SALIR");
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirMouseClicked(evt);
+            }
+        });
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, -1));
+
+        reiniciar.setText("REINICIAR");
+        reiniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reiniciarMouseClicked(evt);
+            }
+        });
+        reiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reiniciarActionPerformed(evt);
+            }
+        });
+        reiniciar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                reiniciarKeyPressed(evt);
+            }
+        });
+        getContentPane().add(reiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,6 +243,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                jTxt_resultado.setVisible(true);
                jLabel_END.setVisible(true);
                logo.setVisible(true);
+               salir.setVisible(true);
+               reiniciar.setVisible(true);
                this.jTxt_resultado.setText("Resultado: " + valor);
                
                JOptionPane.showMessageDialog(null, "Se evaluo el ultimo String, "
@@ -242,6 +275,24 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private void jTxt_resultadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxt_resultadoKeyTyped
         evt.consume();
     }//GEN-LAST:event_jTxt_resultadoKeyTyped
+
+    private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
+        dispose();
+    }//GEN-LAST:event_salirMouseClicked
+
+    private void reiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reiniciarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reiniciarActionPerformed
+
+    private void reiniciarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reiniciarKeyPressed
+
+    }//GEN-LAST:event_reiniciarKeyPressed
+
+    private void reiniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reiniciarMouseClicked
+        dispose();
+        pantallaPrincipal pantalla = new pantallaPrincipal();
+        pantalla.setVisible(true);
+    }//GEN-LAST:event_reiniciarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -290,6 +341,8 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTxt_string;
     private javax.swing.JLabel label_cantidadS;
     private javax.swing.JLabel logo;
+    private javax.swing.JButton reiniciar;
+    private javax.swing.JButton salir;
     private javax.swing.JLabel string_contador;
     // End of variables declaration//GEN-END:variables
 }
