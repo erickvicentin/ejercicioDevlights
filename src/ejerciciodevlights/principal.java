@@ -34,6 +34,11 @@ public class principal {
         return coincidencias;    
     }
     
+    public static int getLongitud(String str){
+        int longitud = str.length();        
+        return longitud;
+    }
+    
     
     /**
      * @param args the command line arguments
